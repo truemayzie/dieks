@@ -1226,25 +1226,36 @@ function CraneCanvas({ scrollProgress, theme }) {
         }
       });
 
+      // Set rotation first, then measure — bounding box must reflect side-view dimensions
+      model.rotation.y = state.currentRotY;
+
       const box = new THREE.Box3().setFromObject(model);
       const center = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
       const maxDim = Math.max(size.x, size.y, size.z);
       const norm = 1 / maxDim;
       model.scale.setScalar(norm);
-      model.position.copy(center.multiplyScalar(-norm));
+      model.position.set(-center.x * norm, -center.y * norm, -center.z * norm);
 
       const normH = size.y * norm;
-      // factor > 1 → crane taller than frame (crops top and bottom)
-      // lookAt above centre → crane shifts down → boom stays visible, base exits below
-      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 1.6);
+      const normW = size.x * norm;
+      const tanHalf = Math.tan((camera.fov * Math.PI / 180) / 2);
+      const aspect = w / h;
+
+      // Height: crane overflows frame (1.6× height = top and bottom clipped)
+      const distByH = (normH / 2) / (tanHalf * 1.6);
+      // Width: boom must not clip — fits 90% of canvas width
+      const distByW = (normW / 2) / (tanHalf * aspect * 0.90);
+      // Use whichever keeps more distance (prevents clipping on the tighter axis)
+      const dist = Math.max(distByH, distByW);
+
       camera.position.set(0, 0, dist);
-      camera.lookAt(0, normH * 0.22, 0);
+      // Look above model centre → crane shifts down, base exits below licence card
+      camera.lookAt(0, normH * 0.18, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
 
-      model.rotation.y = state.currentRotY;
       scene.add(model);
       state.model = model;
     }, undefined, function(err) {
