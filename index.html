@@ -1171,7 +1171,11 @@ function Nav({ activeSection, theme, onThemeChange }) {
 /* ============================================================
    HERO — 3D CRANE CANVAS
    ============================================================ */
-function CraneCanvas({ scrollProgress }) {
+function craneColor(theme) {
+  return theme === 'dark' ? 0xf0ede5 : 0x141820;
+}
+
+function CraneCanvas({ scrollProgress, theme }) {
   const mountRef = useRef(null);
   const stateRef = useRef(null);
 
@@ -1188,31 +1192,37 @@ function CraneCanvas({ scrollProgress }) {
     renderer.setClearColor(0x000000, 0);
     renderer.setSize(w, h);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
+    renderer.toneMappingExposure = 1.1;
     renderer.outputEncoding = THREE.sRGBEncoding;
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, w / h, 0.01, 1000);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    const dir = new THREE.DirectionalLight(0xffffff, 1.2);
-    dir.position.set(3, 8, 5);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const dir = new THREE.DirectionalLight(0xffffff, 1.4);
+    dir.position.set(4, 10, 6);
     scene.add(dir);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.3);
+    fill.position.set(-5, 2, -4);
+    scene.add(fill);
 
-    const state = { targetRotY: -0.3, currentRotY: -0.3, rafId: null, model: null };
+    const INIT_ROT = 1.25;
+    const state = { targetRotY: INIT_ROT, currentRotY: INIT_ROT, rafId: null, model: null, meshes: [] };
     stateRef.current = state;
 
     const loader = new THREE.GLTFLoader();
     loader.load('assets/crane.glb', function(gltf) {
       const model = gltf.scene;
+      const col = craneColor(document.documentElement.dataset.theme || 'dark');
       model.traverse(function(child) {
         if (child.isMesh) {
           child.material = new THREE.MeshStandardMaterial({
-            color: 0xd4d4d4,
-            roughness: 0.6,
-            metalness: 0.2,
+            color: col,
+            roughness: 0.45,
+            metalness: 0.15,
           });
+          state.meshes.push(child);
         }
       });
 
@@ -1225,7 +1235,7 @@ function CraneCanvas({ scrollProgress }) {
       model.position.copy(center.multiplyScalar(-norm));
 
       const normH = size.y * norm;
-      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.8);
+      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.72);
       camera.position.set(0, 0, dist);
       camera.lookAt(0, 0, 0);
       camera.near = dist * 0.001;
@@ -1269,24 +1279,31 @@ function CraneCanvas({ scrollProgress }) {
 
   useEffect(function() {
     if (stateRef.current) {
-      stateRef.current.targetRotY = -0.3 + scrollProgress * 1.4;
+      stateRef.current.targetRotY = 1.25 - scrollProgress * 1.1;
     }
   }, [scrollProgress]);
+
+  useEffect(function() {
+    const st = stateRef.current;
+    if (!st || !st.meshes.length) return;
+    const col = craneColor(theme);
+    st.meshes.forEach(function(m) { m.material.color.set(col); });
+  }, [theme]);
 
   return <div ref={mountRef} style={{ position: 'absolute', inset: 0 }} />;
 }
 
-function StickyCraneStage({ scrollProgress }) {
+function StickyCraneStage({ scrollProgress, theme }) {
   return (
     <div className="sticky-crane-stage">
       <div className="sticky-crane-inner">
-        <CraneCanvas scrollProgress={scrollProgress} />
+        <CraneCanvas scrollProgress={scrollProgress} theme={theme} />
       </div>
     </div>
   );
 }
 
-function Hero({ scrollProgress }) {
+function Hero({ scrollProgress, theme }) {
   return (
     <section className="hero bp-grid" id="hero">
       <div className="container" style={{ position: "relative" }}>
@@ -1324,7 +1341,7 @@ function Hero({ scrollProgress }) {
           </div>
 
           <div className="hero-right">
-            <StickyCraneStage scrollProgress={scrollProgress} />
+            <StickyCraneStage scrollProgress={scrollProgress} theme={theme} />
             <div className="lic-card reveal in delay-3">
               <div className="lic-card-eyebrow">Актуальная лицензия</div>
               <div className="lic-card-no">№ П043-00109-72/00539778</div>
@@ -1857,7 +1874,7 @@ function App() {
   return (
     <>
       <Nav activeSection={activeSection} theme={theme} onThemeChange={handleThemeChange} />
-      <Hero scrollProgress={scrollProgress} />
+      <Hero scrollProgress={scrollProgress} theme={theme} />
       <Stats />
       <Services />
       <Objects />
