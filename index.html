@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Диэкс — Экспертиза промышленной безопасности подъёмных сооружений · Сургут</title>
+<meta name="description" content="ИТЦ «Диагностика и Экспертиза» — экспертиза промышленной безопасности подъёмных сооружений, лифтов, ППИ и эскалаторов. Лицензия Ростехнадзора с 2000 года. Сургут, ХМАО — Югра." />
+<meta name="keywords" content="экспертиза промышленной безопасности, подъёмные сооружения, лифты, ППИ, эскалаторы, Ростехнадзор, Сургут, ХМАО" />
+<meta property="og:title" content="Диэкс — Экспертиза промышленной безопасности" />
+<meta property="og:description" content="ИТЦ «Диагностика и Экспертиза» — экспертиза ПБ подъёмных сооружений, лифтов, ППИ. Лицензия Ростехнадзора № П043. Сургут." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0e1116" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap">
+
+<style>
+/* ============================================================
+   ДИЭКС · Engineering Blueprint
+   Графит + золото · Cormorant Garamond / Space Grotesk / JetBrains Mono
+   ============================================================ */
+
+:root {
+  --bg: #f4f1ea;
+  --bg-2: #ece7dc;
+  --bg-3: #e3ddcd;
+  --ink: #0e1116;
+  --ink-2: #2a2f38;
+  --ink-3: #5a5f6a;
+  --line: rgba(14, 17, 22, 0.18);
+  --line-strong: rgba(14, 17, 22, 0.4);
+  --hairline: rgba(14, 17, 22, 0.1);
+  --accent: oklch(0.74 0.13 78);
+  --accent-ink: #5a4515;
+  --accent-soft: oklch(0.74 0.13 78 / 0.14);
+  --blue: #1a3a5c;
+  --blue-deep: #0f2540;
+  --serif: "Fraunces", "Georgia", serif;
+  --sans: "Space Grotesk", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "Courier New", monospace;
+  --gutter: clamp(20px, 4vw, 56px);
+  --maxw: 1360px;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1116;
+  --bg-2: #161a22;
+  --bg-3: #1d222b;
+  --ink: #f4f1ea;
+  --ink-2: #d6d2c5;
+  --ink-3: #8a8c92;
+  --line: rgba(244, 241, 234, 0.18);
+  --line-strong: rgba(244, 241, 234, 0.4);
+  --hairline: rgba(244, 241, 234, 0.08);
+  --accent: oklch(0.78 0.14 82);
+  --accent-ink: #f7e4b5;
+  --accent-soft: oklch(0.78 0.14 82 / 0.14);
+  --blue: #2c5a8a;
+  --blue-deep: #1a3a5c;
+}
+
+/* Fraunces — variable display serif: optical sizing + thin weight for big headlines */
+[class*="h-"], .hero-title, .section-title, .stat-no, .svc-title,
+.process-step h4, .form-title, .form-success h4, .contact-row .val,
+.lic-block .num, .object-meta h3, .logo-name {
+  font-optical-sizing: auto;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02";
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+
+/* ===== Typography ===== */
+.h-serif { font-family: var(--serif); font-weight: 300; letter-spacing: -0.02em; line-height: 1.0; font-optical-sizing: auto; }
+.h-italic { font-style: italic; font-weight: 400; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.eyebrow-gold {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+.mono { font-family: var(--mono); font-feature-settings: "tnum", "lnum"; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ===== Layout primitives ===== */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+.section {
+  position: relative;
+  padding: clamp(60px, 9vw, 120px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-label {
+  position: absolute;
+  top: 18px;
+  left: var(--gutter);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.section-no {
+  position: absolute;
+  top: 18px;
+  right: var(--gutter);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+}
+
+.bp-grid {
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  transition: all 0.2s ease;
+  position: relative;
+}
+.btn:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn .arrow { transition: transform 0.25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.btn-gold { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-gold:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+/* ===== Navigation ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.3s ease;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--gutter);
+  max-width: var(--maxw);
+  margin: 0 auto;
+  gap: 24px;
+}
+.logo { display: flex; align-items: center; gap: 14px; }
+.logo-img {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.logo-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+.logo-img .logo-img-light { opacity: 1; }
+.logo-img .logo-img-dark { opacity: 0; }
+:root[data-theme="dark"] .logo-img .logo-img-light { opacity: 0; }
+:root[data-theme="dark"] .logo-img .logo-img-dark { opacity: 1; }
+
+.logo-mark {
+  width: 44px; height: 44px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+.logo-mark::after {
+  content: "";
+  position: absolute; inset: 4px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-name { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; }
+.logo-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 5px;
+}
+.nav-right { display: flex; align-items: center; gap: 18px; }
+
+/* Theme toggle */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 3px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.theme-toggle:hover { border-color: var(--line-strong); }
+.tt-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 64px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--bg-2);
+}
+.tt-icon {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  color: var(--ink-2);
+  transition: color 0.3s;
+  pointer-events: none;
+}
+.tt-icon svg { display: block; flex-shrink: 0; }
+.tt-thumb {
+  position: absolute;
+  top: 2px; left: 5px;
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  transition: transform 0.35s cubic-bezier(0.5, 1.6, 0.4, 1), background 0.25s;
+  z-index: 1;
+  pointer-events: none;
+}
+.theme-toggle[data-on="1"] .tt-thumb { transform: translateX(32px); }
+.theme-toggle[data-on="0"] .tt-sun { color: var(--accent-ink); }
+.theme-toggle[data-on="1"] .tt-moon { color: var(--accent-ink); }
+.nav-menu { display: flex; gap: 28px; font-size: 13px; letter-spacing: 0.02em; }
+.nav-menu a { position: relative; padding: 6px 0; color: var(--ink-2); transition: color 0.2s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--ink); }
+.nav-menu a.active::before {
+  content: "";
+  position: absolute; left: -10px; top: 50%;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 0 80px;
+  overflow: hidden;
+  border-top: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+  min-height: 78vh;
+}
+.hero-left { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+.hero-right { position: relative; }
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-ink);
+}
+.hero-eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent); }
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(44px, 6.4vw, 92px);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  font-weight: 300;
+  text-wrap: balance;
+}
+.hero-title em { font-style: normal; color: var(--ink-2); font-weight: 300; }
+.hero-title .gold { color: var(--accent); font-style: normal; }
+
+.hero-sub { font-family: var(--serif); font-weight: 300; font-size: 17px; line-height: 1.5; color: var(--ink-2); max-width: 56ch; }
+.hero-sub .lic {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--accent-soft);
+  padding: 1px 8px;
+  border-radius: 2px;
+  color: var(--accent-ink);
+}
+
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-badges {
+  display: flex; gap: 32px; flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.hero-badge {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.hero-badge::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Sticky crane */
+.sticky-crane-stage { position: relative; width: 100%; height: 100%; min-height: 640px; }
+.sticky-crane-inner {
+  position: sticky;
+  top: 90px;
+  width: 100%;
+  height: min(78vh, 720px);
+}
+.sticky-crane-inner svg { position: absolute; inset: 0; width: 100%; height: 100%; shape-rendering: geometricPrecision; }
+.sticky-crane-inner canvas { display: block; }
+
+/* Process crane backdrop */
+.process-with-crane { position: relative; margin-top: 40px; }
+.process-crane-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+}
+.process-crane-bg svg { width: min(640px, 60%); height: auto; max-height: 100%; transform: scaleX(-1); }
+.process-with-crane .process-track { position: relative; z-index: 1; }
+
+/* Hero meta corners */
+.hero-corner {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-corner::before, .hero-corner::after { content: ""; width: 12px; height: 1px; background: var(--ink-3); }
+.hero-corner.tl { top: -32px; left: 0; }
+.hero-corner.tr { top: -32px; right: 0; }
+.hero-corner.bl { bottom: -46px; left: 0; }
+.hero-corner.br { bottom: -46px; right: 0; }
+@media (max-width: 1024px) { .hero-corner.tl, .hero-corner.tr { display: none; } }
+
+/* License card */
+.lic-card {
+  position: absolute;
+  bottom: 32px; right: 0;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  padding: 22px 26px 22px 30px;
+  width: min(360px, 90%);
+  z-index: 3;
+}
+.lic-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+}
+.lic-card-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.lic-card-no {
+  font-family: var(--mono);
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.lic-card-meta { font-size: 12px; color: var(--ink-2); display: flex; gap: 8px; align-items: center; }
+.lic-card-meta .dot { width: 3px; height: 3px; background: var(--accent); border-radius: 50%; }
+
+/* ===== Stats strip ===== */
+.stats {
+  background: var(--blue-deep);
+  color: #f4f1ea;
+  padding: clamp(56px, 7vw, 96px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.stats::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; }
+.stat { padding: 0 28px; border-left: 1px solid rgba(244, 241, 234, 0.18); }
+.stat:first-child { border-left: none; padding-left: 0; }
+.stat-no {
+  font-family: var(--serif);
+  font-size: clamp(60px, 8vw, 108px);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+  display: flex;
+  align-items: baseline;
+}
+.stat-no .suffix { font-size: 0.5em; color: var(--accent); margin-left: 6px; }
+.stat-no .prefix { font-size: 0.5em; color: var(--accent); margin-right: 6px; }
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.55);
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(244, 241, 234, 0.18);
+  max-width: 22ch;
+}
+
+/* ===== Section header ===== */
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 64px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5.4vw, 68px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-weight: 300;
+}
+.section-title em { font-style: italic; color: var(--ink-2); }
+.section-intro { color: var(--ink-2); max-width: 52ch; font-size: 15px; }
+
+/* ===== Services ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+.svc-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 36px 32px 40px;
+  background: var(--bg);
+  position: relative;
+  transition: background 0.25s ease;
+  display: flex; flex-direction: column; gap: 24px;
+  min-height: 540px;
+}
+.svc-card:hover { background: var(--bg-2); }
+.svc-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-no {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  display: flex; justify-content: space-between;
+}
+.svc-icon-wrap {
+  width: 92px; height: 92px;
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  margin-top: 6px;
+  position: relative;
+}
+.svc-icon-wrap::before, .svc-icon-wrap::after {
+  content: "";
+  position: absolute;
+  width: 10px; height: 10px;
+  border: 1px solid var(--accent);
+}
+.svc-icon-wrap::before { top: -5px; left: -5px; border-right: none; border-bottom: none; }
+.svc-icon-wrap::after { bottom: -5px; right: -5px; border-left: none; border-top: none; }
+.svc-title { font-family: var(--serif); font-size: 30px; line-height: 1.05; letter-spacing: -0.02em; font-weight: 300; }
+.svc-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+.svc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.svc-list li {
+  display: flex; gap: 12px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+.svc-list li::before { content: "↳"; font-family: var(--mono); color: var(--accent); flex-shrink: 0; font-size: 12px; }
+
+/* ===== Objects ===== */
+.objects { background: var(--bg-2); }
+.objects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.object-card { background: var(--bg); border: 1px solid var(--line); display: flex; flex-direction: column; }
+.object-photo {
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(135deg, var(--bg-3) 0 8px, var(--bg-2) 8px 16px);
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+.object-photo .ph-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: var(--bg);
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+}
+.object-photo .ph-corners::before,
+.object-photo .ph-corners::after {
+  content: "";
+  position: absolute;
+  width: 12px; height: 12px;
+  border: 1px solid var(--accent);
+}
+.object-photo .ph-corners::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.object-photo .ph-corners::after { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+.object-meta { padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 14px; }
+.object-meta .eyebrow { color: var(--accent-ink); }
+.object-meta h3 { font-family: var(--serif); font-size: 25px; line-height: 1.18; font-weight: 400; letter-spacing: -0.005em; text-wrap: balance; }
+.object-meta p { color: var(--ink-2); font-size: 13.5px; line-height: 1.5; margin-top: 2px; }
+
+/* ===== Licenses ===== */
+.licenses { background: var(--bg-3); }
+.lic-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.lic-block {
+  padding: 36px 32px;
+  border-left: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 12px;
+  min-height: 220px;
+}
+.lic-block:first-child { border-left: none; padding-left: 0; }
+.lic-block .num { font-family: var(--serif); font-size: 28px; line-height: 1.1; }
+.lic-block .desc { color: var(--ink-2); font-size: 13.5px; }
+.lic-block .seal {
+  margin-top: auto;
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.seal-mark {
+  width: 28px; height: 28px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 10px;
+  color: var(--accent-ink);
+}
+
+/* ===== Process ===== */
+.process-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 40px;
+}
+.process-track::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 8%; right: 8%;
+  height: 1px;
+  border-top: 1px dashed var(--line-strong);
+}
+.process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; position: relative; }
+.process-circle {
+  width: 64px; height: 64px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+  display: grid; place-items: center;
+  font-family: var(--serif);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--accent-ink);
+  position: relative;
+  z-index: 2;
+  transition: all 0.25s ease;
+}
+.process-step:hover .process-circle { background: var(--accent); color: var(--bg); transform: scale(1.05); }
+.process-step h4 { font-family: var(--serif); font-size: 22px; margin-top: 22px; font-weight: 400; }
+.process-step p { margin-top: 8px; font-size: 13px; color: var(--ink-3); max-width: 22ch; }
+.process-step .step-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-top: 12px; }
+
+/* ===== Contacts + form ===== */
+.contacts { background: var(--bg-2); }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 36px; }
+.contact-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.contact-row .key { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); padding-top: 4px; }
+.contact-row .val { font-family: var(--serif); font-size: 19px; line-height: 1.3; color: var(--ink); }
+.contact-row .val .small { display: block; font-family: var(--sans); font-size: 13px; color: var(--ink-2); margin-top: 6px; letter-spacing: 0; }
+
+.form-card {
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  padding: clamp(28px, 3.5vw, 44px);
+  position: relative;
+}
+.form-card::before {
+  content: "ДИЭКС · ЗАЯВКА";
+  position: absolute;
+  top: -10px; left: 24px;
+  background: var(--bg-2);
+  padding: 0 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--ink-3);
+}
+.form-title { font-family: var(--serif); font-size: 36px; line-height: 1.05; margin-bottom: 8px; }
+.form-sub { font-size: 13.5px; color: var(--ink-2); margin-bottom: 28px; }
+.field { margin-bottom: 18px; position: relative; }
+.field label { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: var(--sans);
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+.field.error input, .field.error select { border-color: #c0392b; }
+.field .err-msg { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: #c0392b; margin-top: 4px; text-transform: uppercase; }
+.field select { appearance: none; cursor: pointer; padding-right: 24px; }
+.field-select-wrap { position: relative; }
+.field-select-wrap::after { content: "▾"; position: absolute; right: 0; bottom: 14px; pointer-events: none; color: var(--ink-3); font-family: var(--mono); font-size: 12px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-submit {
+  width: 100%;
+  margin-top: 18px;
+  padding: 18px;
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.form-submit:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.form-success {
+  border: 1px solid var(--accent);
+  padding: 28px;
+  text-align: center;
+  background: var(--accent-soft);
+}
+.form-success .check {
+  width: 48px; height: 48px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin: 0 auto 16px;
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--accent-ink);
+}
+.form-success h4 { font-family: var(--serif); font-size: 26px; margin-bottom: 8px; }
+.form-success p { color: var(--ink-2); font-size: 13.5px; }
+
+/* ===== Footer ===== */
+.footer { background: #0e1116; color: #c8c2b3; padding: 80px 0 40px; }
+[data-theme="dark"] .footer { background: #06080c; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.12);
+}
+.footer h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; font-weight: 500; }
+.footer .logo-name { color: #f4f1ea; }
+.footer p.about { font-size: 13px; line-height: 1.6; color: rgba(244, 241, 234, 0.55); margin-top: 22px; max-width: 38ch; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer ul a { color: rgba(244, 241, 234, 0.7); font-size: 13.5px; transition: color 0.2s; }
+.footer ul a:hover { color: var(--accent); }
+.footer-bottom {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 234, 0.4);
+}
+
+/* ===== Reveal animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.65, 0.3, 0.95), transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 0.95);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+.reveal.delay-4 { transition-delay: 0.4s; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-right { min-height: 480px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .objects-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 28px 0; }
+  .stat { padding: 24px; border-left: none; border-top: 1px solid rgba(244, 241, 234, 0.18); }
+  .stat:nth-child(1), .stat:nth-child(2) { border-top: none; }
+  .lic-card { position: static; width: 100%; margin-top: 24px; }
+  .lic-grid { grid-template-columns: 1fr; }
+  .lic-block { border-left: none; border-top: 1px solid var(--line); padding-top: 32px; padding-left: 0; }
+  .lic-block:first-child { border-top: none; padding-top: 0; }
+  .process-track { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .process-track::before { display: none; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .section-head { grid-template-columns: 1fr; gap: 16px; }
+  .nav-menu { display: none; }
+  .nav-right .btn { display: none; }
+  .sticky-crane-inner { position: relative; top: auto; height: 480px; }
+  .process-crane-bg { display: none; }
+}
+@media (max-width: 640px) {
+  .objects-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .process-track { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat:nth-child(2), .stat:nth-child(3), .stat:nth-child(4) { border-top: 1px solid rgba(244, 241, 234, 0.18); }
+  .hero-cta .btn { flex: 1; justify-content: center; }
+  /* lic-card becomes static at 1024px below */
+}
+</style>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="libs/GLTFLoader.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ============================================================
+   INTERACTIVE CRANE SVG
+   ============================================================ */
+function InteractiveCrane({ progress = 0 }) {
+  const jibAngle = -8 + progress * 14;
+  const trolley = 0.25 + progress * 0.55;
+  const hookDrop = 30 + progress * 280;
+
+  const baseX = 315;
+  const baseY = 560;
+  const jibY = 172;
+  const jibLeftX = 92;
+  const jibRightX = 554;
+  const apexH = 88;
+
+  const trolleyX = baseX + (jibRightX - baseX) * trolley;
+  const trolleyY = jibY + 14;
+  const transform = `rotate(${jibAngle} ${baseX} ${jibY})`;
+  const hMid = (jibY + baseY) / 2;
+
+  return (
+    <svg viewBox="0 0 640 720" preserveAspectRatio="xMidYMid meet" aria-hidden="true"
+      style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision" }}>
+
+      <defs>
+        <pattern id="grid-minor" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--hairline)" strokeWidth="0.3" />
+        </pattern>
+      </defs>
+      <rect width="640" height="720" fill="url(#grid-minor)" opacity="0.6" />
+
+      {/* Frame */}
+      <rect x="20" y="20" width="600" height="680" fill="none" stroke="var(--line)" strokeWidth="0.7" />
+
+      {/* Stamps */}
+      <g fontFamily="JetBrains Mono, monospace" fontSize="9" fill="var(--ink-3)" letterSpacing="1.4">
+        <text x="32" y="38">ДИЭКС · ТС—01</text>
+        <text x="620" y="38" textAnchor="end">МАСШ 1:120</text>
+        <text x="32" y="690">ЛИС 01/03</text>
+        <text x="620" y="690" textAnchor="end">РЕД. {String(Math.round(progress * 100)).padStart(2, "0")}</text>
+      </g>
+
+      {/* Horizontal dimension L */}
+      <g stroke="var(--ink-3)" strokeWidth="0.6" fill="none">
+        <line x1={jibLeftX} y1="62" x2={jibRightX} y2="62" strokeDasharray="3 3" />
+        <line x1={jibLeftX} y1="54" x2={jibLeftX} y2="70" strokeWidth="1" />
+        <line x1={jibRightX} y1="54" x2={jibRightX} y2="70" strokeWidth="1" />
+      </g>
+      <text x={(jibLeftX + jibRightX) / 2} y="56" textAnchor="middle"
+        fontFamily="JetBrains Mono, monospace" fontSize="9" fill="var(--ink-3)">L = 42 000 мм</text>
+
+      {/* Vertical dimension H */}
+      <g stroke="var(--ink-3)" strokeWidth="0.6" fill="none">
+        <line x1="54" y1={jibY} x2="54" y2={baseY} strokeDasharray="3 3" />
+        <line x1="46" y1={jibY} x2="62" y2={jibY} strokeWidth="1" />
+        <line x1="46" y1={baseY} x2="62" y2={baseY} strokeWidth="1" />
+      </g>
+      <text x="38" y={hMid} textAnchor="middle"
+        fontFamily="JetBrains Mono, monospace" fontSize="9" fill="var(--ink-3)"
+        transform={`rotate(-90 38 ${hMid})`}>H = 38 200 мм</text>
+
+      {/* Ground */}
+      <line x1="20" y1={baseY + 16} x2="620" y2={baseY + 16} stroke="var(--ink-2)" strokeWidth="1.5" />
+      <g stroke="var(--ink-3)" strokeWidth="0.6">
+        {Array.from({ length: 24 }).map((_, i) => (
+          <line key={i} x1={28 + i * 25} y1={baseY + 16} x2={36 + i * 25} y2={baseY + 30} />
+        ))}
+      </g>
+
+      {/* Tower (mast) */}
+      <g stroke="var(--ink)" strokeWidth="2" fill="none">
+        <line x1={baseX - 22} y1={baseY + 16} x2={baseX - 13} y2={jibY + 18} />
+        <line x1={baseX + 22} y1={baseY + 16} x2={baseX + 13} y2={jibY + 18} />
+      </g>
+      <g stroke="var(--ink)" strokeWidth="0.9" fill="none">
+        {Array.from({ length: 9 }).map((_, i) => {
+          const t1 = i / 9, t2 = (i + 1) / 9;
+          const y1v = baseY + 16 + (jibY + 18 - baseY - 16) * t1;
+          const y2v = baseY + 16 + (jibY + 18 - baseY - 16) * t2;
+          const xL1 = (baseX - 22) + ((baseX - 13) - (baseX - 22)) * t1;
+          const xR1 = (baseX + 22) + ((baseX + 13) - (baseX + 22)) * t1;
+          const xL2 = (baseX - 22) + ((baseX - 13) - (baseX - 22)) * t2;
+          const xR2 = (baseX + 22) + ((baseX + 13) - (baseX + 22)) * t2;
+          return (
+            <g key={i}>
+              <line x1={xL1} y1={y1v} x2={xR2} y2={y2v} />
+              <line x1={xR1} y1={y1v} x2={xL2} y2={y2v} />
+              <line x1={xL1} y1={y1v} x2={xR1} y2={y1v} strokeWidth="0.5" stroke="var(--line-strong)" />
+            </g>
+          );
+        })}
+      </g>
+      <line x1={baseX - 22} y1={baseY + 16} x2={baseX + 22} y2={baseY + 16} stroke="var(--ink)" strokeWidth="2" />
+
+      {/* Rotating assembly */}
+      <g transform={transform}>
+        {/* Pivot */}
+        <circle cx={baseX} cy={jibY + 18} r="16" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1.5" />
+        <circle cx={baseX} cy={jibY + 18} r="7" fill="var(--accent)" stroke="none" />
+
+        {/* Cabin */}
+        <rect x={baseX - 13} y={jibY - 2} width="26" height="20" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1.5" />
+        <rect x={baseX - 9} y={jibY + 2} width="18" height="8" fill="var(--accent-soft)" stroke="var(--accent)" strokeWidth="0.8" />
+
+        {/* Main jib */}
+        <line x1={baseX} y1={jibY} x2={jibRightX} y2={jibY} stroke="var(--ink)" strokeWidth="2" />
+        <line x1={baseX} y1={jibY + 18} x2={jibRightX} y2={jibY + 18} stroke="var(--ink)" strokeWidth="2" />
+        <g stroke="var(--ink)" strokeWidth="1" fill="none">
+          {Array.from({ length: 10 }).map((_, i) => {
+            const x = baseX + (jibRightX - baseX) * (i / 10);
+            const xn = baseX + (jibRightX - baseX) * ((i + 1) / 10);
+            return (
+              <g key={i}>
+                <line x1={x} y1={jibY} x2={x} y2={jibY + 18} strokeWidth="0.7" stroke="var(--ink-2)" />
+                {i % 2 === 0
+                  ? <line x1={x} y1={jibY} x2={xn} y2={jibY + 18} />
+                  : <line x1={x} y1={jibY + 18} x2={xn} y2={jibY} />}
+              </g>
+            );
+          })}
+        </g>
+        <line x1={jibRightX} y1={jibY} x2={jibRightX} y2={jibY + 18} stroke="var(--ink)" strokeWidth="2" />
+
+        {/* Counterbalance jib */}
+        <line x1={baseX} y1={jibY} x2={jibLeftX} y2={jibY} stroke="var(--ink)" strokeWidth="2" />
+        <line x1={baseX} y1={jibY + 18} x2={jibLeftX + 12} y2={jibY + 18} stroke="var(--ink)" strokeWidth="1.5" />
+        <line x1={jibLeftX} y1={jibY} x2={jibLeftX + 12} y2={jibY + 18} stroke="var(--ink)" strokeWidth="1.2" />
+        <g stroke="var(--ink)" strokeWidth="0.8" fill="none">
+          {Array.from({ length: 4 }).map((_, i) => {
+            const x = jibLeftX + 12 + ((baseX - jibLeftX - 12) * i) / 4;
+            return <line key={i} x1={x} y1={jibY} x2={x + 10} y2={jibY + 18} />;
+          })}
+        </g>
+
+        {/* Counterweight */}
+        <rect x={jibLeftX - 20} y={jibY - 8} width="36" height="30" fill="var(--ink)" />
+        <text x={jibLeftX - 2} y={jibY + 11} textAnchor="middle"
+          fontFamily="JetBrains Mono, monospace" fontSize="8" fill="var(--bg)" letterSpacing="0.5">5.2т</text>
+
+        {/* Apex (king post) */}
+        <g stroke="var(--ink)" fill="none" strokeWidth="1.5">
+          <line x1={baseX} y1={jibY - 2} x2={baseX} y2={jibY - apexH} />
+          <line x1={baseX} y1={jibY - apexH} x2={jibRightX - 50} y2={jibY} />
+          <line x1={baseX} y1={jibY - apexH} x2={jibLeftX + 18} y2={jibY} />
+        </g>
+        <g stroke="var(--ink)" fill="none" strokeWidth="0.7" strokeDasharray="4 3">
+          <line x1={baseX} y1={jibY - apexH} x2={jibRightX - 10} y2={jibY} />
+          <line x1={baseX} y1={jibY - apexH} x2={jibRightX} y2={jibY} />
+        </g>
+
+        {/* Trolley */}
+        <rect x={trolleyX - 13} y={trolleyY} width="26" height="10" fill="var(--accent)" stroke="var(--ink)" strokeWidth="1" />
+        <circle cx={trolleyX - 9} cy={trolleyY + 10} r="3" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1" />
+        <circle cx={trolleyX + 9} cy={trolleyY + 10} r="3" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1" />
+
+        {/* Cable */}
+        <line x1={trolleyX} y1={trolleyY + 10} x2={trolleyX} y2={trolleyY + 10 + hookDrop}
+          stroke="var(--ink)" strokeWidth="1.2" />
+
+        {/* Hook */}
+        <g transform={`translate(${trolleyX} ${trolleyY + 10 + hookDrop})`}>
+          <rect x="-8" y="0" width="16" height="7" fill="var(--ink)" />
+          <path d="M 0 7 L 0 16 Q 0 23 -6 23 Q -12 23 -12 16"
+            fill="none" stroke="var(--ink)" strokeWidth="2" />
+          <circle cx="0" cy="3.5" r="2.5" fill="var(--accent)" />
+        </g>
+      </g>
+
+      {/* Annotations */}
+      <g fontFamily="JetBrains Mono, monospace" fontSize="9" fill="var(--ink-3)" letterSpacing="0.8">
+        <line x1={baseX + 26} y1={baseY - 55} x2={baseX + 90} y2={baseY - 95}
+          stroke="var(--ink-3)" strokeWidth="0.6" />
+        <circle cx={baseX + 26} cy={baseY - 55} r="2.5" fill="var(--accent)" />
+        <text x={baseX + 94} y={baseY - 91}>МАЧТА · 6×6 м</text>
+
+        <line x1={baseX + 4} y1={baseY + 12} x2={baseX + 88} y2={baseY + 44}
+          stroke="var(--ink-3)" strokeWidth="0.6" />
+        <circle cx={baseX + 4} cy={baseY + 12} r="2.5" fill="var(--accent)" />
+        <text x={baseX + 92} y={baseY + 48}>ОПОРНАЯ ПЛИТА</text>
+      </g>
+
+      {/* Progress indicator */}
+      <g transform="translate(516 622)">
+        <rect x="0" y="0" width="88" height="38" fill="var(--bg)" stroke="var(--ink)" strokeWidth="0.8" />
+        <rect x="0" y="0" width="4" height="38" fill="var(--accent)" />
+        <text x="12" y="14" fontFamily="JetBrains Mono, monospace" fontSize="8"
+          fill="var(--ink-3)" letterSpacing="1.2">СКРОЛЛ</text>
+        <rect x="12" y="21" width="66" height="3" fill="none" stroke="var(--line-strong)" strokeWidth="0.5" />
+        <rect x="12" y="21" width={66 * progress} height="3" fill="var(--accent)" />
+        <text x="82" y="34" textAnchor="end" fontFamily="JetBrains Mono, monospace"
+          fontSize="8" fill="var(--ink-2)">{String(Math.round(progress * 100)).padStart(3, "0")}%</text>
+      </g>
+    </svg>
+  );
+}
+
+/* ============================================================
+   ICONS
+   ============================================================ */
+function IconCrane() {
+  return (
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <line x1="10" y1="46" x2="46" y2="46" /><line x1="22" y1="46" x2="22" y2="14" /><line x1="26" y1="46" x2="26" y2="14" />
+      <line x1="22" y1="14" x2="48" y2="14" /><line x1="22" y1="18" x2="46" y2="18" />
+      <line x1="22" y1="14" x2="26" y2="18" /><line x1="26" y1="14" x2="30" y2="18" /><line x1="30" y1="14" x2="34" y2="18" />
+      <line x1="34" y1="14" x2="38" y2="18" /><line x1="38" y1="14" x2="42" y2="18" /><line x1="42" y1="14" x2="46" y2="18" />
+      <line x1="38" y1="18" x2="38" y2="32" /><path d="M36 32 L36 36 Q36 40 32 40 Q28 40 28 36" />
+      <line x1="22" y1="22" x2="26" y2="22" /><line x1="22" y1="26" x2="26" y2="26" /><line x1="22" y1="30" x2="26" y2="30" />
+      <line x1="22" y1="34" x2="26" y2="34" /><line x1="22" y1="38" x2="26" y2="38" />
+    </svg>
+  );
+}
+
+function IconLift() {
+  return (
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <rect x="14" y="8" width="28" height="40" /><line x1="28" y1="8" x2="28" y2="48" />
+      <path d="M22 20 L18 24 L22 28" /><path d="M34 20 L38 24 L34 28" />
+      <line x1="14" y1="38" x2="42" y2="38" /><line x1="20" y1="42" x2="22" y2="42" /><line x1="34" y1="42" x2="36" y2="42" />
+    </svg>
+  );
+}
+
+function IconPlatform() {
+  return (
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="currentColor" strokeWidth="1.2">
+      <line x1="6" y1="46" x2="50" y2="46" /><rect x="14" y="14" width="28" height="6" />
+      <line x1="20" y1="20" x2="20" y2="46" /><line x1="36" y1="20" x2="36" y2="46" /><line x1="20" y1="32" x2="36" y2="32" />
+      <line x1="14" y1="14" x2="20" y2="20" /><line x1="42" y1="14" x2="36" y2="20" />
+      <line x1="28" y1="14" x2="28" y2="8" /><line x1="24" y1="8" x2="32" y2="8" />
+    </svg>
+  );
+}
+
+/* ============================================================
+   LOGO MARK
+   ============================================================ */
+function LogoMark({ height = 56 }) {
+  const width = Math.round(height * 1.23);
+  return (
+    <span className="logo-img" style={{ width, height }}>
+      <img src="assets/logo-light.svg" alt="Диэкс — инженерно-технический центр" className="logo-img-dark" width={width} height={height} />
+      <img src="assets/logo-dark.svg" alt="" aria-hidden="true" className="logo-img-light" width={width} height={height} />
+    </span>
+  );
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+function ThemeToggle({ value, onChange }) {
+  const isDark = value === "dark";
+  return (
+    <button type="button" className="theme-toggle" role="switch" aria-checked={isDark}
+      aria-label="Переключить тему" data-on={isDark ? "1" : "0"}
+      onClick={() => onChange(isDark ? "light" : "dark")}>
+      <span className="tt-track">
+        <span className="tt-icon tt-sun" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+            <circle cx="12" cy="12" r="4" />
+            <line x1="12" y1="2" x2="12" y2="5" /><line x1="12" y1="19" x2="12" y2="22" />
+            <line x1="2" y1="12" x2="5" y2="12" /><line x1="19" y1="12" x2="22" y2="12" />
+            <line x1="4.5" y1="4.5" x2="6.5" y2="6.5" /><line x1="17.5" y1="17.5" x2="19.5" y2="19.5" />
+            <line x1="4.5" y1="19.5" x2="6.5" y2="17.5" /><line x1="17.5" y1="6.5" x2="19.5" y2="4.5" />
+          </svg>
+        </span>
+        <span className="tt-icon tt-moon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 14.5 A8.5 8.5 0 1 1 9.5 4 A6.5 6.5 0 0 0 20 14.5 Z" />
+          </svg>
+        </span>
+        <span className="tt-thumb"></span>
+      </span>
+    </button>
+  );
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function Nav({ activeSection, theme, onThemeChange }) {
+  return (
+    <nav className="nav">
+      <div className="nav-inner">
+        <a href="#hero" className="logo">
+          <LogoMark height={48} />
+        </a>
+        <div className="nav-menu">
+          <a href="#hero" className={activeSection === "hero" ? "active" : ""}>О нас</a>
+          <a href="#services" className={activeSection === "services" ? "active" : ""}>Услуги</a>
+          <a href="#licenses" className={activeSection === "licenses" ? "active" : ""}>Лицензии</a>
+          <a href="#contacts" className={activeSection === "contacts" ? "active" : ""}>Контакты</a>
+        </div>
+        <div className="nav-right">
+          <ThemeToggle value={theme} onChange={onThemeChange} />
+          <a href="#contacts" className="btn btn-gold">
+            Оставить заявку <span className="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+/* ============================================================
+   HERO — 3D CRANE CANVAS
+   ============================================================ */
+function CraneCanvas({ scrollProgress }) {
+  const mountRef = useRef(null);
+  const stateRef = useRef(null);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    const THREE = window.THREE;
+    if (!mount || !THREE || !THREE.GLTFLoader) return;
+
+    const w = mount.offsetWidth || 600;
+    const h = mount.offsetHeight || 640;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(w, h);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    mount.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, w / h, 0.01, 1000);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+    const dir = new THREE.DirectionalLight(0xffffff, 1.2);
+    dir.position.set(3, 8, 5);
+    scene.add(dir);
+
+    const state = { targetRotY: -0.3, currentRotY: -0.3, rafId: null, model: null };
+    stateRef.current = state;
+
+    const loader = new THREE.GLTFLoader();
+    loader.load('assets/crane.glb', function(gltf) {
+      const model = gltf.scene;
+      model.traverse(function(child) {
+        if (child.isMesh) {
+          child.material = new THREE.MeshStandardMaterial({
+            color: 0xd4d4d4,
+            roughness: 0.6,
+            metalness: 0.2,
+          });
+        }
+      });
+
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const norm = 1 / maxDim;
+      model.scale.setScalar(norm);
+      model.position.copy(center.multiplyScalar(-norm));
+
+      const normH = size.y * norm;
+      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.8);
+      camera.position.set(0, 0, dist);
+      camera.lookAt(0, 0, 0);
+      camera.near = dist * 0.001;
+      camera.far = dist * 10;
+      camera.updateProjectionMatrix();
+
+      model.rotation.y = state.currentRotY;
+      scene.add(model);
+      state.model = model;
+    }, undefined, function(err) {
+      console.error('crane.glb load error:', err);
+    });
+
+    var rafId;
+    function tick() {
+      rafId = requestAnimationFrame(tick);
+      state.rafId = rafId;
+      state.currentRotY += (state.targetRotY - state.currentRotY) * 0.06;
+      if (state.model) state.model.rotation.y = state.currentRotY;
+      renderer.render(scene, camera);
+    }
+    tick();
+
+    function onResize() {
+      var nw = mount.offsetWidth, nh = mount.offsetHeight;
+      if (!nw || !nh) return;
+      camera.aspect = nw / nh;
+      camera.updateProjectionMatrix();
+      renderer.setSize(nw, nh);
+    }
+    window.addEventListener('resize', onResize);
+
+    return function() {
+      window.removeEventListener('resize', onResize);
+      cancelAnimationFrame(rafId);
+      renderer.dispose();
+      if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement);
+      stateRef.current = null;
+    };
+  }, []);
+
+  useEffect(function() {
+    if (stateRef.current) {
+      stateRef.current.targetRotY = -0.3 + scrollProgress * 1.4;
+    }
+  }, [scrollProgress]);
+
+  return <div ref={mountRef} style={{ position: 'absolute', inset: 0 }} />;
+}
+
+function StickyCraneStage({ scrollProgress }) {
+  return (
+    <div className="sticky-crane-stage">
+      <div className="sticky-crane-inner">
+        <CraneCanvas scrollProgress={scrollProgress} />
+      </div>
+    </div>
+  );
+}
+
+function Hero({ scrollProgress }) {
+  return (
+    <section className="hero bp-grid" id="hero">
+      <div className="container" style={{ position: "relative" }}>
+        <div className="hero-corner tl">ДИЭКС · 2000 — 2026</div>
+        <div className="hero-corner tr">МАСШТАБ 1:1</div>
+
+        <div className="hero-grid">
+          <div className="hero-left">
+            <div className="hero-eyebrow eyebrow-gold reveal in">
+              Сургут · ХМАО — Югра · с 2000 года
+            </div>
+            <h1 className="hero-title reveal in delay-1">
+              Экспертиза <em>промышленной</em><br />
+              безопасности <span className="gold">подъёмных</span><br />
+              сооружений
+            </h1>
+            <p className="hero-sub reveal in delay-2">
+              Диагностируем краны, лифты, ППИ и эскалаторы —
+              выдаём заключения с регистрацией в ФГИС ОПО.
+              Работаем по ХМАО и Западной Сибири.
+            </p>
+            <div className="hero-cta reveal in delay-3">
+              <a href="#contacts" className="btn btn-gold">
+                Оставить заявку <span className="arrow">→</span>
+              </a>
+              <a href="tel:+73462379200" className="btn btn-outline">
+                +7 (3462) 37-92-00
+              </a>
+            </div>
+            <div className="hero-badges reveal in delay-4">
+              <div className="hero-badge">Лицензия Ростехнадзора</div>
+              <div className="hero-badge">Аттестат RA.RU.27ЛФ43</div>
+              <div className="hero-badge">№ 38 в реестре ЭО</div>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <StickyCraneStage scrollProgress={scrollProgress} />
+            <div className="lic-card reveal in delay-3">
+              <div className="lic-card-eyebrow">Актуальная лицензия</div>
+              <div className="lic-card-no">№ П043-00109-72/00539778</div>
+              <div className="lic-card-meta">
+                <span>Бессрочная</span>
+                <span className="dot"></span>
+                <span>Ростехнадзор</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="hero-corner bl">ЧЕР · ТС—01</div>
+        <div className="hero-corner br">РЕД. {String(Math.round(scrollProgress * 100)).padStart(2, "0")}</div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+function AnimatedNumber({ to, duration = 1600 }) {
+  const [val, setVal] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && !started.current) {
+          started.current = true;
+          const start = performance.now();
+          const tick = (t) => {
+            const p = Math.min(1, (t - start) / duration);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setVal(Math.round(to * eased));
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.4 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [to, duration]);
+
+  return <span ref={ref} className="tnum">{val}</span>;
+}
+
+function Stats() {
+  return (
+    <section className="stats">
+      <div className="container">
+        <div className="stats-grid">
+          <div className="stat">
+            <div className="stat-no"><AnimatedNumber to={25} /><span className="suffix">+</span></div>
+            <div className="stat-label">Лет на рынке экспертизы</div>
+          </div>
+          <div className="stat">
+            <div className="stat-no"><AnimatedNumber to={3} /></div>
+            <div className="stat-label">Направления услуг</div>
+          </div>
+          <div className="stat">
+            <div className="stat-no"><span className="prefix">№</span><AnimatedNumber to={38} /></div>
+            <div className="stat-label">В реестре экспертных организаций</div>
+          </div>
+          <div className="stat">
+            <div className="stat-no"><AnimatedNumber to={3} /></div>
+            <div className="stat-label">Аттестованных эксперта</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+function Services() {
+  const cards = [
+    {
+      no: "01", tag: "ПС · ПОДЪЁМНЫЕ СООРУЖЕНИЯ",
+      title: "Грузоподъёмные краны, краны-манипуляторы, вышки",
+      meta: "Категория ПС", icon: <IconCrane />,
+      list: [
+        "Проведение экспертизы промышленной безопасности",
+        "Техническое диагностирование ПС",
+        "Техническое освидетельствование ПС",
+        "Паспортизация подъёмных сооружений",
+        "Все виды электроизмерительных работ на ПС",
+        "Акт проверки работоспособности приборов безопасности",
+      ],
+    },
+    {
+      no: "02", tag: "ЛИФТЫ",
+      title: "Испытательная лаборатория RA.RU.27ЛФ43",
+      meta: "ГОСТ ISO/IEC 17025—2019", icon: <IconLift />,
+      list: [
+        "Периодическое техосвидетельствование (не реже 1 раза в 12 мес.)",
+        "Частичное техническое освидетельствование",
+        "Обследование лифта (продление срока эксплуатации)",
+        "Полное техническое освидетельствование лифта",
+      ],
+    },
+    {
+      no: "03", tag: "ППИ И ЭСКАЛАТОРЫ",
+      title: "Экспертная организация № 38 в реестре",
+      meta: "Постановление № 1809 от 15.11.2025", icon: <IconPlatform />,
+      list: [
+        "Периодическое техосвидетельствование (не реже 1 раза в 12 мес.)",
+        "Полное техническое освидетельствование",
+        "Обследование (продление срока эксплуатации)",
+        "Паспортизация ППИ и эскалаторов",
+      ],
+    },
+  ];
+
+  return (
+    <section className="section" id="services">
+      <div className="section-label">04 / Услуги</div>
+      <div className="section-no">EXPERTISE</div>
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>04 · Что мы делаем</div>
+            <h2 className="section-title">Три направления<br /><em>одной экспертизы</em></h2>
+          </div>
+          <p className="section-intro">
+            Каждое направление подкреплено собственным разрешительным документом. Мы работаем
+            на объектах I—IV класса опасности по всему ХМАО — Югре, ЯНАО и югу Тюменской области.
+          </p>
+        </div>
+        <div className="services-grid">
+          {cards.map((c, i) => (
+            <article key={c.no} className="svc-card reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="svc-no">
+                <span>{c.no} / 03</span>
+                <span>{c.tag}</span>
+              </div>
+              <div className="svc-icon-wrap">{c.icon}</div>
+              <div>
+                <h3 className="svc-title">{c.title}</h3>
+                <div className="svc-meta" style={{ marginTop: 10 }}>{c.meta}</div>
+              </div>
+              <ul className="svc-list">
+                {c.list.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   OBJECTS
+   ============================================================ */
+function Objects() {
+  const items = [
+    { tag: "ПС—01", title: "Башенные и автомобильные краны", desc: "Грузоподъёмность от 1 до 250 тонн. Работы на стройплощадках и промышленных объектах.", ph: "ФОТО · КРАН НА ОБЪЕКТЕ" },
+    { tag: "ЛФ—02", title: "Пассажирские и грузовые лифты", desc: "Жилые комплексы, БЦ, торговые центры. Освидетельствование по ГОСТ Р 53780.", ph: "ФОТО · МАШИННЫЙ ЗАЛ" },
+    { tag: "ПЛ—03", title: "ППИ и эскалаторы", desc: "Подъёмные платформы для инвалидов, эскалаторы, траволаторы — диагностика и продление ресурса.", ph: "ФОТО · ЭСКАЛАТОР" },
+  ];
+  return (
+    <section className="section objects">
+      <div className="section-label">05 / Объекты</div>
+      <div className="section-no">SCOPE</div>
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>05 · Типы объектов</div>
+            <h2 className="section-title">На что мы<br /><em>выезжаем</em></h2>
+          </div>
+          <p className="section-intro">
+            За 25 лет — тысячи актов и заключений. Ниже — основные типы оборудования,
+            которое проходит экспертизу в нашей организации.
+          </p>
+        </div>
+        <div className="objects-grid">
+          {items.map((it, i) => (
+            <div key={it.tag} className="object-card reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="object-photo">
+                <div className="ph-corners"></div>
+                <div className="ph-tag">{it.ph}</div>
+              </div>
+              <div className="object-meta">
+                <div className="eyebrow">{it.tag}</div>
+                <h3>{it.title}</h3>
+                <p>{it.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   LICENSES
+   ============================================================ */
+function Licenses() {
+  const blocks = [
+    { eyebrow: "Лицензия Ростехнадзора", num: "№ П043-00109-72 / 00539778", desc: "Бессрочная. Экспертиза промышленной безопасности.", seal: "RTН · ИНДЕКС П043" },
+    { eyebrow: "Аттестат аккредитации", num: "RA.RU.27ЛФ43", desc: "Испытательная лаборатория по лифтам. ГОСТ ISO/IEC 17025—2019.", seal: "ROSACCRED · 17025" },
+    { eyebrow: "Реестр экспертных организаций", num: "№ 38", desc: "По ППИ и эскалаторам. Постановление № 1809 от 15.11.2025.", seal: "ФГИС ОПО · ЭО" },
+  ];
+  return (
+    <section className="section licenses" id="licenses">
+      <div className="section-label">06 / Документы</div>
+      <div className="section-no">LICENSES</div>
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>06 · Разрешительная база</div>
+            <h2 className="section-title">Каждое направление —<br /><em>с действующей лицензией</em></h2>
+          </div>
+          <p className="section-intro">
+            Все документы внесены в государственные реестры и доступны для проверки.
+            Мы не работаем без актуальных аккредитаций.
+          </p>
+        </div>
+        <div className="lic-grid">
+          {blocks.map((b, i) => (
+            <div key={b.num} className="lic-block reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="eyebrow-gold">{b.eyebrow}</div>
+              <div className="num">{b.num}</div>
+              <div className="desc">{b.desc}</div>
+              <div className="seal">
+                <div className="seal-mark">✓</div>
+                <span>{b.seal}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+function Process({ scrollProgress }) {
+  const steps = [
+    { no: "01", title: "Заявка", desc: "Звонок, письмо или форма на сайте", tag: "DAY 0" },
+    { no: "02", title: "Документация", desc: "Анализ паспортов и тех. документов", tag: "DAY 1—2" },
+    { no: "03", title: "Выезд", desc: "Диагностика и обследование объекта", tag: "DAY 3—5" },
+    { no: "04", title: "Заключение", desc: "Оформление экспертного заключения", tag: "DAY 6—10" },
+    { no: "05", title: "Регистрация", desc: "Внесение в реестр ФГИС ОПО", tag: "DAY 11—14" },
+  ];
+  return (
+    <section className="section bp-grid">
+      <div className="section-label">07 / Регламент</div>
+      <div className="section-no">PROCESS</div>
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>07 · Порядок работы</div>
+            <h2 className="section-title">Порядок проведения<br /><em>экспертизы</em></h2>
+          </div>
+          <p className="section-intro">
+            От первого звонка до записи в реестре ФГИС ОПО проходит 10—14 рабочих дней.
+            Каждый этап подтверждается документально.
+          </p>
+        </div>
+        <div className="process-with-crane">
+          <div className="process-track">
+            {steps.map((s, i) => (
+              <div key={s.no} className="process-step reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="process-circle">{s.no}</div>
+                <h4>{s.title}</h4>
+                <p>{s.desc}</p>
+                <div className="step-tag">{s.tag}</div>
+              </div>
+            ))}
+          </div>
+          <div className="process-crane-bg" aria-hidden="true">
+            <InteractiveCrane progress={scrollProgress} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+function ContactForm() {
+  const [data, setData] = useState({ service: "", org: "", name: "", phone: "" });
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const validate = () => {
+    const e = {};
+    if (!data.service) e.service = "Выберите услугу";
+    if (!data.org.trim()) e.org = "Укажите организацию";
+    if (!data.name.trim()) e.name = "Имя обязательно";
+    const phoneClean = data.phone.replace(/\D/g, "");
+    if (phoneClean.length < 10) e.phone = "Неверный телефон";
+    return e;
+  };
+
+  const submit = (ev) => {
+    ev.preventDefault();
+    const e = validate();
+    setErrors(e);
+    if (Object.keys(e).length === 0) {
+      setLoading(true);
+      setTimeout(() => { setLoading(false); setSent(true); }, 900);
+    }
+  };
+
+  if (sent) {
+    return (
+      <div className="form-card form-success">
+        <div className="check">✓</div>
+        <h4>Заявка принята</h4>
+        <p>Свяжемся с вами в течение рабочего дня (8:30—17:00).<br />
+          Регистрационный номер: DK-{Math.floor(Math.random() * 90000 + 10000)}</p>
+      </div>
+    );
+  }
+
+  return (
+    <form className="form-card" onSubmit={submit} noValidate>
+      <h3 className="form-title">Оставить заявку</h3>
+      <p className="form-sub">Заполните форму — пришлём расчёт стоимости в течение дня.</p>
+
+      <div className={`field ${errors.service ? "error" : ""}`}>
+        <label>Тип услуги</label>
+        <div className="field-select-wrap">
+          <select value={data.service} onChange={(e) => setData({ ...data, service: e.target.value })}>
+            <option value="">— выберите направление —</option>
+            <option value="ps">Подъёмные сооружения (краны)</option>
+            <option value="lift">Лифты</option>
+            <option value="ppi">ППИ и эскалаторы</option>
+          </select>
+        </div>
+        {errors.service && <div className="err-msg">{errors.service}</div>}
+      </div>
+
+      <div className={`field ${errors.org ? "error" : ""}`}>
+        <label>Организация</label>
+        <input type="text" placeholder="ООО «...»" value={data.org}
+          onChange={(e) => setData({ ...data, org: e.target.value })} />
+        {errors.org && <div className="err-msg">{errors.org}</div>}
+      </div>
+
+      <div className="form-row">
+        <div className={`field ${errors.name ? "error" : ""}`}>
+          <label>Контактное лицо</label>
+          <input type="text" placeholder="Иван Петров" value={data.name}
+            onChange={(e) => setData({ ...data, name: e.target.value })} />
+          {errors.name && <div className="err-msg">{errors.name}</div>}
+        </div>
+        <div className={`field ${errors.phone ? "error" : ""}`}>
+          <label>Телефон</label>
+          <input type="tel" placeholder="+7 (___) ___-__-__" value={data.phone}
+            onChange={(e) => setData({ ...data, phone: e.target.value })} />
+          {errors.phone && <div className="err-msg">{errors.phone}</div>}
+        </div>
+      </div>
+
+      <button type="submit" className="form-submit" disabled={loading}>
+        {loading ? "Отправка..." : <>Отправить заявку <span>→</span></>}
+      </button>
+    </form>
+  );
+}
+
+function Contacts() {
+  return (
+    <section className="section contacts" id="contacts">
+      <div className="section-label">08 / Связь</div>
+      <div className="section-no">CONTACTS</div>
+      <div className="container">
+        <div className="section-head reveal">
+          <div>
+            <div className="eyebrow" style={{ marginBottom: 16 }}>08 · Контакты</div>
+            <h2 className="section-title">Сургут,<br /><em>Нефтеюганское ш. 18/4</em></h2>
+          </div>
+          <p className="section-intro">
+            Принимаем заявки ежедневно. Выезд по ХМАО — Югре, ЯНАО и югу Тюменской области.
+            Договор и счёт — в день обращения.
+          </p>
+        </div>
+        <div className="contacts-grid">
+          <div className="contact-info">
+            <div className="contact-row">
+              <div className="key">Адрес</div>
+              <div className="val">
+                Нефтеюганское шоссе, 18/4
+                <span className="small">Северный промышленный район, Сургут, ХМАО — Югра, 628415</span>
+              </div>
+            </div>
+            <div className="contact-row">
+              <div className="key">График</div>
+              <div className="val">
+                Ежедневно 8:30 — 17:00
+                <span className="small">Обед 12:00 — 13:00</span>
+              </div>
+            </div>
+            <div className="contact-row">
+              <div className="key">Телефоны</div>
+              <div className="val">
+                <a href="tel:+73462379200">+7 (3462) 37-92-00</a>
+                <span className="small">37-92-05 · 37-92-07</span>
+              </div>
+            </div>
+            <div className="contact-row">
+              <div className="key">Email</div>
+              <div className="val">
+                <a href="mailto:dieks@mail.ru">dieks@mail.ru</a>
+                <span className="small">Документы и заявки</span>
+              </div>
+            </div>
+          </div>
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div>
+            <div className="logo">
+              <LogoMark height={72} />
+            </div>
+            <p className="about">
+              ООО ИТЦ «Диагностика и Экспертиза» · Основана 9 февраля 2000 года ·
+              Сургут, ХМАО — Югра. Лицензия Ростехнадзора № П043-00109-72/00539778.
+            </p>
+          </div>
+          <div>
+            <h5>Услуги</h5>
+            <ul>
+              <li><a href="#services">Подъёмные сооружения</a></li>
+              <li><a href="#services">Лифты</a></li>
+              <li><a href="#services">ППИ и эскалаторы</a></li>
+              <li><a href="#services">Электроизмерения</a></li>
+              <li><a href="#services">Паспортизация</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Компания</h5>
+            <ul>
+              <li><a href="#hero">О нас</a></li>
+              <li><a href="#licenses">Лицензии</a></li>
+              <li><a href="#contacts">Контакты</a></li>
+              <li><a href="#contacts">Оставить заявку</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© 2000 — 2026 · ООО ИТЦ «Диагностика и Экспертиза»</span>
+          <span>Сургут · ХМАО — Югра · РФ</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ============================================================
+   APP
+   ============================================================ */
+function App() {
+  const savedTheme = typeof localStorage !== 'undefined' ? (localStorage.getItem('dieks-theme') || 'dark') : 'dark';
+  const [theme, setTheme] = useState(savedTheme);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("hero");
+
+  const handleThemeChange = (v) => {
+    setTheme(v);
+    localStorage.setItem('dieks-theme', v);
+  };
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        setScrollProgress(p);
+        raf = null;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["hero", "services", "licenses", "contacts"];
+    const obs = new IntersectionObserver(
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); }); },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+    ids.forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }); },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <>
+      <Nav activeSection={activeSection} theme={theme} onThemeChange={handleThemeChange} />
+      <Hero scrollProgress={scrollProgress} />
+      <Stats />
+      <Services />
+      <Objects />
+      <Licenses />
+      <Process scrollProgress={scrollProgress} />
+      <Contacts />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
