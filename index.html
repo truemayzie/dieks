@@ -1207,7 +1207,7 @@ function CraneCanvas({ scrollProgress, theme }) {
     fill.position.set(-5, 2, -4);
     scene.add(fill);
 
-    const INIT_ROT = 1.55;
+    const INIT_ROT = -1.55;
     const state = { targetRotY: INIT_ROT, currentRotY: INIT_ROT, rafId: null, model: null, meshes: [] };
     stateRef.current = state;
 
@@ -1242,16 +1242,13 @@ function CraneCanvas({ scrollProgress, theme }) {
       const tanHalf = Math.tan((camera.fov * Math.PI / 180) / 2);
       const aspect = w / h;
 
-      // Height: crane overflows frame (1.6× height = top and bottom clipped)
-      const distByH = (normH / 2) / (tanHalf * 1.6);
-      // Width: boom must not clip — fits 90% of canvas width
-      const distByW = (normW / 2) / (tanHalf * aspect * 0.90);
-      // Use whichever keeps more distance (prevents clipping on the tighter axis)
-      const dist = Math.max(distByH, distByW);
+      // Fit by WIDTH so boom never clips horizontally
+      const dist = (normW / 2) / (tanHalf * aspect * 0.86);
 
       camera.position.set(0, 0, dist);
-      // Look above model centre → crane shifts down, base exits below licence card
-      camera.lookAt(0, normH * 0.18, 0);
+      // Pan left → crane shifts right (mast at right edge)
+      // Pan up   → crane shifts down (mast overflows top, base exits below)
+      camera.lookAt(-normW * 0.24, normH * 0.14, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
@@ -1292,7 +1289,7 @@ function CraneCanvas({ scrollProgress, theme }) {
 
   useEffect(function() {
     if (stateRef.current) {
-      stateRef.current.targetRotY = 1.55 - scrollProgress * 1.1;
+      stateRef.current.targetRotY = -1.55 + scrollProgress * 0.8;
     }
   }, [scrollProgress]);
 
