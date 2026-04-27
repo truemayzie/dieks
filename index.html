@@ -323,8 +323,15 @@ button { cursor: pointer; background: none; border: none; }
   align-items: stretch;
   min-height: 78vh;
 }
-.hero-left { display: flex; flex-direction: column; justify-content: center; gap: 40px; }
-.hero-right { position: relative; }
+.hero-right { position: relative; z-index: 1; }
+.hero-left  { display: flex; flex-direction: column; justify-content: center; gap: 40px; position: relative; z-index: 1; }
+.hero-crane-overlay {
+  position: absolute;
+  top: 0; right: 0;
+  width: 54%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
 
 .hero-eyebrow {
   display: flex;
@@ -379,15 +386,7 @@ button { cursor: pointer; background: none; border: none; }
 }
 
 /* Sticky crane */
-.sticky-crane-stage { position: relative; width: 100%; height: 100%; min-height: 640px; }
-.sticky-crane-inner {
-  position: sticky;
-  top: 90px;
-  width: 100%;
-  height: min(78vh, 720px);
-}
-.sticky-crane-inner svg { position: absolute; inset: 0; width: 100%; height: 100%; shape-rendering: geometricPrecision; }
-.sticky-crane-inner canvas { display: block; }
+.hero-crane-overlay canvas { display: block; width: 100% !important; height: 100% !important; }
 
 /* Process crane backdrop */
 .process-with-crane { position: relative; margin-top: 40px; }
@@ -1246,9 +1245,8 @@ function CraneCanvas({ scrollProgress, theme }) {
       const dist = (normW / 2) / (tanHalf * aspect * 0.86);
 
       camera.position.set(0, 0, dist);
-      // Pan left → crane shifts right (mast at right edge)
-      // Pan up   → crane shifts down (mast overflows top, base exits below)
-      camera.lookAt(-normW * 0.24, normH * 0.14, 0);
+      // Look above centre → crane shifts down, mast overflows top, base exits below
+      camera.lookAt(0, normH * 0.12, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
@@ -1316,6 +1314,11 @@ function StickyCraneStage({ scrollProgress, theme }) {
 function Hero({ scrollProgress, theme }) {
   return (
     <section className="hero bp-grid" id="hero">
+      {/* Canvas overlay: right 54% of section, full height — outside grid */}
+      <div className="hero-crane-overlay">
+        <CraneCanvas scrollProgress={scrollProgress} theme={theme} />
+      </div>
+
       <div className="container" style={{ position: "relative" }}>
         <div className="hero-corner tl">ДИЭКС · 2000 — 2026</div>
         <div className="hero-corner tr">МАСШТАБ 1:1</div>
@@ -1351,7 +1354,6 @@ function Hero({ scrollProgress, theme }) {
           </div>
 
           <div className="hero-right">
-            <StickyCraneStage scrollProgress={scrollProgress} theme={theme} />
             <div className="lic-card reveal in delay-3">
               <div className="lic-card-eyebrow">Актуальная лицензия</div>
               <div className="lic-card-no">№ П043-00109-72/00539778</div>
