@@ -1235,10 +1235,11 @@ function CraneCanvas({ scrollProgress, theme }) {
       model.position.copy(center.multiplyScalar(-norm));
 
       const normH = size.y * norm;
-      // pull camera close so crane fills frame; look slightly above centre → crane shifts down
-      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.44);
+      // factor > 1 → crane taller than frame (crops top and bottom)
+      // lookAt above centre → crane shifts down → boom stays visible, base exits below
+      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 1.6);
       camera.position.set(0, 0, dist);
-      camera.lookAt(0, normH * 0.14, 0);
+      camera.lookAt(0, normH * 0.22, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
