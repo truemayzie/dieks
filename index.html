@@ -1172,7 +1172,7 @@ function Nav({ activeSection, theme, onThemeChange }) {
    HERO — 3D CRANE CANVAS
    ============================================================ */
 function craneColor(theme) {
-  return theme === 'dark' ? 0xf0ede5 : 0x141820;
+  return theme === 'dark' ? 0xf4f1ea : 0x2a2f38;
 }
 
 function CraneCanvas({ scrollProgress, theme }) {
@@ -1207,7 +1207,7 @@ function CraneCanvas({ scrollProgress, theme }) {
     fill.position.set(-5, 2, -4);
     scene.add(fill);
 
-    const INIT_ROT = 1.25;
+    const INIT_ROT = 1.55;
     const state = { targetRotY: INIT_ROT, currentRotY: INIT_ROT, rafId: null, model: null, meshes: [] };
     stateRef.current = state;
 
@@ -1235,9 +1235,10 @@ function CraneCanvas({ scrollProgress, theme }) {
       model.position.copy(center.multiplyScalar(-norm));
 
       const normH = size.y * norm;
-      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.72);
+      // pull camera close so crane fills frame; look slightly above centre → crane shifts down
+      const dist = (normH / 2) / (Math.tan((camera.fov * Math.PI / 180) / 2) * 0.44);
       camera.position.set(0, 0, dist);
-      camera.lookAt(0, 0, 0);
+      camera.lookAt(0, normH * 0.14, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
@@ -1279,7 +1280,7 @@ function CraneCanvas({ scrollProgress, theme }) {
 
   useEffect(function() {
     if (stateRef.current) {
-      stateRef.current.targetRotY = 1.25 - scrollProgress * 1.1;
+      stateRef.current.targetRotY = 1.55 - scrollProgress * 1.1;
     }
   }, [scrollProgress]);
 
