@@ -331,6 +331,10 @@ button { cursor: pointer; background: none; border: none; }
   width: 54%; height: 100%;
   pointer-events: none;
   z-index: 0;
+  /* Мягкое растворение к тексту + чуть сдвиг вправо — меньше «плаката», больше воздуха */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 11%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 11%, black 100%);
+  transform: translateX(3%);
 }
 
 .hero-eyebrow {
@@ -1170,8 +1174,23 @@ function Nav({ activeSection, theme, onThemeChange }) {
 /* ============================================================
    HERO — 3D CRANE CANVAS
    ============================================================ */
-function craneColor(theme) {
-  return theme === 'dark' ? 0xf4f1ea : 0x2a2f38;
+function craneMaterials(theme) {
+  if (theme === 'dark') {
+    return {
+      color: 0xb8b2a6,
+      emissive: 0x3d3528,
+      emissiveIntensity: 0.055,
+      roughness: 0.5,
+      metalness: 0.28,
+    };
+  }
+  return {
+    color: 0x2a3038,
+    emissive: 0x000000,
+    emissiveIntensity: 0,
+    roughness: 0.46,
+    metalness: 0.14,
+  };
 }
 
 function CraneCanvas({ scrollProgress, theme }) {
@@ -1191,20 +1210,23 @@ function CraneCanvas({ scrollProgress, theme }) {
     renderer.setClearColor(0x000000, 0);
     renderer.setSize(w, h);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.1;
+    renderer.toneMappingExposure = 0.93;
     renderer.outputEncoding = THREE.sRGBEncoding;
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, w / h, 0.01, 1000);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-    const dir = new THREE.DirectionalLight(0xffffff, 1.4);
-    dir.position.set(4, 10, 6);
+    scene.add(new THREE.AmbientLight(0xc8cdd5, 0.42));
+    const dir = new THREE.DirectionalLight(0xfff8f2, 1.05);
+    dir.position.set(5, 9, 7);
     scene.add(dir);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.3);
-    fill.position.set(-5, 2, -4);
+    const fill = new THREE.DirectionalLight(0xe8eef8, 0.38);
+    fill.position.set(-5, 2, -3);
     scene.add(fill);
+    const rim = new THREE.DirectionalLight(0xffe0b0, 0.36);
+    rim.position.set(-7, 2, -6);
+    scene.add(rim);
 
     const INIT_ROT = -1.55;
     const state = { targetRotY: INIT_ROT, currentRotY: INIT_ROT, rafId: null, model: null, meshes: [] };
@@ -1213,13 +1235,15 @@ function CraneCanvas({ scrollProgress, theme }) {
     const loader = new THREE.GLTFLoader();
     loader.load('assets/crane.glb', function(gltf) {
       const model = gltf.scene;
-      const col = craneColor(document.documentElement.dataset.theme || 'dark');
+      const mats = craneMaterials(document.documentElement.dataset.theme || 'dark');
       model.traverse(function(child) {
         if (child.isMesh) {
           child.material = new THREE.MeshStandardMaterial({
-            color: col,
-            roughness: 0.45,
-            metalness: 0.15,
+            color: mats.color,
+            emissive: mats.emissive,
+            emissiveIntensity: mats.emissiveIntensity,
+            roughness: mats.roughness,
+            metalness: mats.metalness,
           });
           state.meshes.push(child);
         }
@@ -1244,9 +1268,9 @@ function CraneCanvas({ scrollProgress, theme }) {
       // Fit by WIDTH so boom never clips horizontally
       const dist = (normW / 2) / (tanHalf * aspect * 0.86);
 
-      camera.position.set(0, 0, dist);
+      camera.position.set(dist * 0.11, dist * 0.035, dist);
       // Look above centre → crane shifts down, mast overflows top, base exits below
-      camera.lookAt(0, normH * 0.12, 0);
+      camera.lookAt(0, normH * 0.1, 0);
       camera.near = dist * 0.001;
       camera.far = dist * 10;
       camera.updateProjectionMatrix();
@@ -1294,8 +1318,14 @@ function CraneCanvas({ scrollProgress, theme }) {
   useEffect(function() {
     const st = stateRef.current;
     if (!st || !st.meshes.length) return;
-    const col = craneColor(theme);
-    st.meshes.forEach(function(m) { m.material.color.set(col); });
+    const mats = craneMaterials(theme);
+    st.meshes.forEach(function(m) {
+      m.material.color.setHex(mats.color);
+      m.material.emissive.setHex(mats.emissive);
+      m.material.emissiveIntensity = mats.emissiveIntensity;
+      m.material.roughness = mats.roughness;
+      m.material.metalness = mats.metalness;
+    });
   }, [theme]);
 
   return <div ref={mountRef} style={{ position: 'absolute', inset: 0 }} />;
